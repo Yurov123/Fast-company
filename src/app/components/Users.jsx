@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import api from "../api"
+import api from "../app/api"
 
 const Users = () => {
     const [users, setUsers] = useState(api.users.fetchAll());
@@ -37,7 +37,8 @@ const Users = () => {
                             <th scope="col">Профессия</th>
                             <th scope="col">Встретился, раз</th>
                             <th scope="col">Оценка</th>
-                            <th />
+                            <th scope="col">Избранное</th>
+                            <th/>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +55,7 @@ const Users = () => {
                             <td>{user.profession.name}</td>
                             <td>{user.completedMeetings}</td>
                             <td>{user.rate} /5</td>
+                            <td></td>
                             <td>
                                 <button
                                     onClick={() => handleDelete(user._id)}
