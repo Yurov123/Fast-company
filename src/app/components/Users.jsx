@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import api from "../app/api"
+import api from "../api"
 
 const Users = () => {
     const [users, setUsers] = useState(api.users.fetchAll());
+    
 
     const handleDelete = (userId) => {
         setUsers(users.filter((user) => user._id !== userId));
@@ -15,6 +16,7 @@ const Users = () => {
         if (lastOne === 1) return "человек тусанет";
         return "человек тусанет";
     };
+
 
     return (
         <>
@@ -38,33 +40,28 @@ const Users = () => {
                             <th scope="col">Встретился, раз</th>
                             <th scope="col">Оценка</th>
                             <th scope="col">Избранное</th>
-                            <th/>
+                            <th />
                         </tr>
                     </thead>
                     <tbody>
                         {users.map((user) => (
                             <tr key={user._id}>
-                            <td>{user.name}</td>
-                            <td>
-                                {user.qualities.map((item) => (
-                                    <span className={"badge m-1 bg-" + item.color} key={item._id}>
-                                        {item.name}
-                                    </span>
-                                ))}
-                            </td>
-                            <td>{user.profession.name}</td>
-                            <td>{user.completedMeetings}</td>
-                            <td>{user.rate} /5</td>
-                            <td></td>
-                            <td>
-                                <button
-                                    onClick={() => handleDelete(user._id)}
-                                    className="btn btn-danger"
-                                >
-                                    delete
-                                </button>
-                            </td>
-                        </tr>
+                                <td>{user.name}</td>
+                                <td>
+                                    {user.qualities.map((item) => (
+                                        <span className={"badge m-1 bg-" + item.color} key={item._id}>
+                                            {item.name}
+                                        </span>
+                                    ))}
+                                </td>
+                                <td>{user.profession.name}</td>
+                                <td>{user.completedMeetings}</td>
+                                <td>{user.rate} /5</td>
+                                <td ></td>  
+                                <td>
+                                    <button onClick={() => handleDelete(user._id)} className="btn btn-danger">delete</button>
+                                </td>
+                            </tr>
                         ))}
                     </tbody>
                 </table>
@@ -74,3 +71,4 @@ const Users = () => {
 };
 
 export default Users;
+/*bi bi-bookmark-heart-fill */
