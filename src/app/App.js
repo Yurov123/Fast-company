@@ -6,8 +6,8 @@ import api from "./api";
 function App() {
   const [users, setUsers] = useState(api.users.fetchAll());
 
-  const handleDelete = (userId) => {
-    setUsers(users.filter((user) => user._id !== userId));
+  const handleDelete = (users) => {
+    setUsers(users.filter((user) => user._id !== user._id));
   };
   const handleToggleBookMark = (id) => {};
 
@@ -15,7 +15,7 @@ function App() {
     <>
       <SearchStatus />
 
-      <Users />
+      <Users users={users} handleToggleBookMark={handleToggleBookMark} handleDelete={handleDelete}/>
     </>
   );
 }
