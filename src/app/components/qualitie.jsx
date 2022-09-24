@@ -1,13 +1,19 @@
 import React from "react";
 
 
-const Qualitie = ({ color, name, _id }) => {
-    
-  return (
-        <span className={"badge m-1 bg-" + color} key={_id}>
-          {name.id}
-        </span>
-  );
+const Qualitie = ({ qualities }) => {
+
+    return (
+        <td>
+            {qualities.map((el) => {
+                return (
+                    <span className={"badge m-1 bg-" + el.color} key={el._id}>
+                        {el.name}
+                    </span>)
+            })}
+
+        </td>
+    );
 };
 
 export default Qualitie;
