@@ -105,6 +105,7 @@ const Users = ({ users: allUsers, ...rest }) => {
     );
 };
 Users.propTypes = {
-    users: PropTypes.array
-}
+    users: PropTypes.array.isRequired
+};
+
 export default Users;
