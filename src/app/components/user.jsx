@@ -1,47 +1,56 @@
 import React from "react";
-import Qualitie from "./qualitie";
+import PropTypes from "prop-types";
+import Quality from "./quality";
 import BookMark from "./bookmark";
-import PropTypes from 'prop-types';
-
-
 const User = ({
-    name,
     _id,
-    bookmark,
+    name,
     qualities,
     profession,
-    handleToggleBookMark,
     completedMeetings,
-    handleDelete,
     rate,
+    onDelete,
+    bookmark,
+    onToggleBookMark
 }) => {
     return (
-        <tr key={_id}>
+        <tr>
             <td>{name}</td>
-                    <Qualitie qualities={qualities} />
+            <td>
+                {qualities.map((qual) => (
+                    <Quality {...qual} key={qual._id} />
+                ))}
+            </td>
             <td>{profession.name}</td>
             <td>{completedMeetings}</td>
             <td>{rate} /5</td>
             <td>
-                <BookMark status={bookmark} onClick={() => handleToggleBookMark(_id)} />
+                <BookMark
+                    status={bookmark}
+                    onClick={() => onToggleBookMark(_id)}
+                />
             </td>
             <td>
-                <button onClick={() => handleDelete(_id)} className="btn btn-danger">
+                <button
+                    onClick={() => onDelete(_id)}
+                    className="btn btn-danger"
+                >
                     delete
                 </button>
             </td>
         </tr>
     );
 };
-User.propTypes ={
-    name: PropTypes.string.isRequired,
+User.propTypes = {
     _id: PropTypes.string.isRequired,
-    bookmark: PropTypes.func.isRequired,
-    profession: PropTypes.string.isRequired,
-    handleToggleBookMark: PropTypes.func.isRequired,
-    completedMeetings: PropTypes.func.isRequired,
-    handleDelete: PropTypes.func.isRequired,
-    rate: PropTypes.number.isRequired
+    name: PropTypes.string.isRequired,
+    qualities: PropTypes.array,
+    profession: PropTypes.object.isRequired,
+    completedMeetings: PropTypes.number.isRequired,
+    rate: PropTypes.number.isRequired,
+    onDelete: PropTypes.func.isRequired,
+    bookmark: PropTypes.bool,
+    onToggleBookMark: PropTypes.func.isRequired
 };
 
-export default User;
+export default User;;
