@@ -24,15 +24,16 @@ const Users = () => {
         setUsers(users.filter((user) => user._id !== userId));
     };
     const handleToggleBookMark = (id) => {
-        setUsers(
-            users.map((user) => {
+        
+            const newArray = users.map((user) => {
                 if (user._id === id) {
                     return { ...user, bookmark: !user.bookmark };
                 }
                 return user;
-            })
-        );
+            });
+        
         setUsers(newArray);
+        
     };
 
     useEffect(() => {
@@ -110,7 +111,7 @@ const Users = () => {
                 </div>
             </div>
         </div>
-    )};
+    );}
     return "loading...";
 };
 Users.propTypes = {
