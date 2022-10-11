@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Quality from "./quality";
 import BookMark from "./bookmark";
+
 const User = ({
     _id,
     name,
@@ -14,7 +15,7 @@ const User = ({
     onToggleBookMark
 }) => {
     return (
-        <tr>
+        <tr key={_id}>
             <td>{name}</td>
             <td>
                 {qualities.map((qual) => (
