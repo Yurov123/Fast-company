@@ -1,13 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const GroupList = ({
-    items,
-    valueProperty,
-    contentProperty,
-    onItemSelect,
-    selectedItem
-}) => {
+const GroupList = ({ items, valueProperty, contentProperty, onItemSelect, selectedItem }) => {
     if (!Array.isArray(items)) {
         return (
             <ul className="list-group">
@@ -45,10 +39,12 @@ const GroupList = ({
         </ul>
     );
 };
+
 GroupList.defaultProps = {
     valueProperty: "_id",
     contentProperty: "name"
 };
+
 GroupList.propTypes = {
     items: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     valueProperty: PropTypes.string.isRequired,
